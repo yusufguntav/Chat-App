@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "679155295296",
+    "project_id": "chat-app-2ab15",
+    "storage_bucket": "chat-app-2ab15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679155295296:android:18eab9b3e79535ad68aba5",
+        "android_client_info": {
+          "package_name": "com.yusufgntv.chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679155295296-e6rkudpfrsrhq8sh2kn5id5jqvuodvlh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9tt4Qu3AelINZUzLr6j_k8AK1BrU4IAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679155295296-e6rkudpfrsrhq8sh2kn5id5jqvuodvlh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
