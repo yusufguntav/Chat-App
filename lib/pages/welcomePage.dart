@@ -5,7 +5,9 @@ import 'package:chat_app/widgets/signButton.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
-  const WelcomePage({super.key});
+  const WelcomePage({
+    super.key,
+  });
 
   @override
   State<WelcomePage> createState() => _WelcomePageState();

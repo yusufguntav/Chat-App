@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
         PageNames.welcomePage: (context) => const WelcomePage(),
         PageNames.loginPage: (context) => const LoginPage(),
         PageNames.registerPage: (context) => const RegisterPage(),
-        PageNames.chatPage: (context) => const ChatPage(),
         PageNames.loadingPage: (context) => const LoadingPage(),
         PageNames.homePage: (context) => const HomePage(),
+        PageNames.chatPage: (context) => const ChatPage(),
       },
     );
   }

@@ -1,19 +1,27 @@
 import 'package:chat_app/assets/constants.dart';
+import 'package:chat_app/pages/loadingPage.dart';
+import 'package:chat_app/pages/staticPageNames.dart';
+import 'package:chat_app/services/isUsernameTaken.dart';
 import 'package:chat_app/services/signOut.dart';
+import 'package:chat_app/utils/createUserModel.dart';
+import 'package:chat_app/widgets/CustomAlert.dart';
 import 'package:chat_app/widgets/customButton.dart';
 import 'package:chat_app/widgets/header.dart';
+import 'package:chat_app/widgets/signPage.dart';
 import 'package:chat_app/widgets/textBox.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  final TextEditingController _textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,15 +34,15 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Expanded(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Header(
                         text: 'Welcome!',
                       ),
                       Header(
                         text:
-                            FirebaseAuth.instance.currentUser!.email.toString(),
-                        headerSize: HeaderSize.headerMedium,
+                            'Enter the username of the person you want to talk',
+                        headerSize: HeaderSize.headerSmall,
                       ),
                     ],
                   ),
@@ -43,12 +51,8 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
                       TextBox(
-                        hintText: 'ysf@gmail.com',
-                      ),
-                      Header(
-                        text:
-                            'info: Enter the email address of the person you want to talk',
-                        headerSize: HeaderSize.headerSmall,
+                        controller: _textEditingController,
+                        hintText: 'yusufguntav',
                       ),
                       CustomButton(
                         buttonBackgroundColor: kButtonBackgroundColor,
@@ -56,7 +60,18 @@ class _HomePageState extends State<HomePage> {
                           text: 'Start Chat!',
                           headerSize: HeaderSize.headerMedium,
                         ),
-                        onPress: () {},
+                        onPress: () async {
+                          if (!await isUsernameTaken(
+                              _textEditingController.text)) {
+                            return CustomAlert(context, 'Warning!',
+                                    'You have entered an invalid username. Please try again.')
+                                .show();
+                          }
+                          otherUserModel = await createOtherUserModel(
+                              _textEditingController.text);
+                          // ignore: use_build_context_synchronously
+                          Navigator.pushNamed(context, PageNames.chatPage);
+                        },
                       ),
                       CustomButton(
                         buttonBackgroundColor: Colors.red.shade400,
